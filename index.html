@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лапа Помощи — Главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="anketa-overlay" id="anketaOverlay">
+        <div class="anketa-popup">
+            <button class="anketa-close" id="anketaClose">&times;</button>
+            <div class="anketa-content">
+                <h2 class="anketa-title">🐾 Анкета будущего хозяина</h2>
+                <p class="anketa-subtitle">Заполните форму, и мы свяжемся с вами для знакомства с питомцем</p>
+                
+                <form class="anketa-form" id="anketaForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pet-type">Кого хотите приютить? *</label>
+                        <select id="pet-type" name="pet-type" required>
+                            <option value="">Выберите...</option>
+                            <option value="cat">Кошку</option>
+                            <option value="dog">Собаку</option>
+                            <option value="any">Любого пушистика</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Комментарий (по желанию)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Расскажите о себе, какие питомцы вам нравятся..."></textarea>
+                    </div>
+                    
+                    <div class="form-group form-agreement">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span>Я даю согласие на обработку персональных данных *</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="anketa-submit">Отправить заявку</button>
+                </form>
+                
+                <div class="anketa-success" id="anketaSuccess" style="display: none;">
+                    <div class="success-icon">✅</div>
+                    <h3>Спасибо за заявку!</h3>
+                    <p>Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+                    <button class="anketa-ok" id="anketaOk">Хорошо</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ОНЛАЙН-ЧАТ ВИДЖЕТ — JAVASCRIPT              -->
+    <!-- ============================================ -->
+    <div class="chat-widget">
+        <!-- Кнопка открытия чата -->
+        <div class="chat-button" id="chatButton">
+            <span class="chat-icon">💬</span>
+            <span class="chat-button-text">Есть вопросы?</span>
+        </div>
+        
+        <!-- Окно чата -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <span class="chat-avatar">🐕</span>
+                    <div class="chat-header-info">
+                        <h3>Лапа Помощи</h3>
+                        <span class="online-status">🟢 Онлайн</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message message-operator">
+                    <div class="message-avatar">🐾</div>
+                    <div class="message-bubble">
+                        Здравствуйте! Я консультант приюта «Лапа Помощи». С радостью отвечу на ваши вопросы 💚
+                    </div>
+                </div>
+                <div class="message message-operator">
+                    <div class="message-avatar">🐾</div>
+                    <div class="message-bubble">
+                        Спросите нас о питомцах, условиях приюта или о том, как забрать друга домой!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Напишите ваш вопрос...">
+                <button class="chat-send" id="chatSend">➤</button>
+            </div>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="content">
+            <header class="header">
+                <div class="logo">
+                    🐾 Лапа Помощи <span>| Приют</span>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#about" class="nav-btn">О приюте</a>
+                    <a href="#catalog" class="nav-btn">Каталог животных</a>
+                    <a href="#help" class="nav-btn">Помощь приюту</a>
+                    <a href="#contacts" class="nav-btn">Контакты</a>
+                </nav>
+            </header>
+            <div class="hero-text">
+                <div class="hero-title">
+                    Подари питомцу дом
+                </div>
+                <div class="hero-description">
+                    50+ пушистых сердец ждут свою семью.<br>
+                    Каждый из них мечтает о тёплых объятиях, уютной лежанке<br>
+                    и любящем хозяине, который больше никогда не предаст.
+                </div>
+                <button class="main-cta" id="openAnketa">🐕 Хочу приютить</button>
+            </div>
+        </div>
+    </div>
+            <!-- РАЗДЕЛ "О ПРИЮТЕ" -->
+<section id="about" class="page-section">
+    <div class="container">
+        <h2 class="section-title">О приюте</h2>
+        <div class="section-content">
+            <p>«Лапа Помощи» — это не просто приют, это временный дом для животных, которые оказались в трудной ситуации.</p>
+            <p>Мы существуем с 2020 года и за это время нашли семью для более чем 500 кошек и собак.</p>
+            <p>Наша миссия — подарить каждому питомцу любящую семью и достойную жизнь.</p>
+            <div class="about-gallery-scroll">
+    <div class="about-main-photo">
+                <img src="Общая.jpg" alt="Приют Лапа Помощи">
+            </div>
+            
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">счастливых хвостиков пристроено</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">питомцев сейчас в приюте</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">волонтёров помогают ежедневно</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- РАЗДЕЛ "КАТАЛОГ ЖИВОТНЫХ" — БЕЗ JAVASCRIPT   -->
+    <!-- ============================================ -->
+    <section id="catalog" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Каталог животных</h2>
+            <div class="section-content">
+                <p>Здесь скоро появятся карточки наших питомцев. Каждый из них ждёт своего человека!</p>
+                <div class="catalog-placeholder">
+                    <p>🐕 🐈 🐕 🐈</p>
+                    <p>Раздел в разработке</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- РАЗДЕЛ "ПОМОЩЬ ПРИЮТУ" — БЕЗ JAVASCRIPT      -->
+    <!-- ============================================ -->
+    <section id="help" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Помощь приюту</h2>
+            <div class="section-content">
+                <p>Вы можете помочь нам разными способами:</p>
+                <ul class="help-list">
+                    <li>🐾 Взять питомца домой</li>
+                    <li>🐾 Стать волонтёром</li>
+                    <li>🐾 Помочь кормом или лекарствами</li>
+                    <li>🐾 Сделать пожертвование</li>
+                </ul>
+                <p>Здесь будет размещена Яндекс.Форма для заполнения заявки на помощь.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- РАЗДЕЛ "КОНТАКТЫ" — БЕЗ JAVASCRIPT           -->
+    <!-- ============================================ -->
+    <section id="contacts" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="section-content">
+                <div class="contacts-info">
+                    <p>📞 +7 (999) 123-45-67</p>
+                    <p>✉️ diankalahyan@mail.ru</p>
+                    <p>📍 город Москва</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ПОДВАЛ — БЕЗ JAVASCRIPT                      -->
+    <!-- ============================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-phone">+7 (999) 123-45-67</div>
+            <div class="footer-email">diankalahyan@mail.ru</div>
+            <div class="footer-location">город Москва</div>
+            <div class="footer-copyright">© 2026 Калашян Диана</div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT — ТОЛЬКО ДЛЯ ЧАТА И АНКЕТЫ        -->
+    <!-- ============================================ -->
+    <script>
+        // ========== ЛОГИКА ОНЛАЙН-ЧАТА ==========
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Открыть чат
+        chatButton.addEventListener('click', function() {
+            chatWindow.style.display = 'flex';
+            chatButton.style.display = 'none';
+        });
+
+        // Закрыть чат
+        chatClose.addEventListener('click', function() {
+            chatWindow.style.display = 'none';
+            chatButton.style.display = 'flex';
+        });
+
+        // Отправить сообщение
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText === '') return;
+
+            // Сообщение пользователя
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message message-user';
+            userMessageDiv.innerHTML = `
+                <div class="message-bubble">${messageText}</div>
+                <div class="message-avatar">👤</div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Имитация "печатает..."
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message message-operator typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🐾</div>
+                <div class="message-bubble">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Ответ от оператора
+            setTimeout(() => {
+                const indicator = document.getElementById('typingIndicator');
+                if (indicator) indicator.remove();
+
+                const operatorMessageDiv = document.createElement('div');
+                operatorMessageDiv.className = 'message message-operator';
+                
+                const responses = [
+                    'Спасибо за вопрос! Мы свяжемся с вами в ближайшее время 💕',
+                    'Отличный выбор! Приезжайте знакомиться с питомцами 🐱',
+                    'Все наши животные привиты и обработаны. Приходите знакомиться! 🐶',
+                    'Оставьте ваш номер телефона, и волонтёр перезвонит вам 📞'
+                ];
+                
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                
+                operatorMessageDiv.innerHTML = `
+                    <div class="message-avatar">🐾</div>
+                    <div class="message-bubble">${randomResponse}</div>
+                `;
+                chatMessages.appendChild(operatorMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 2500);
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // ========== ЛОГИКА АНКЕТЫ ==========
+        const openAnketaBtn = document.getElementById('openAnketa');
+        const anketaOverlay = document.getElementById('anketaOverlay');
+        const anketaClose = document.getElementById('anketaClose');
+        const anketaForm = document.getElementById('anketaForm');
+        const anketaSuccess = document.getElementById('anketaSuccess');
+        const anketaOk = document.getElementById('anketaOk');
+
+        // Открыть анкету
+        openAnketaBtn.addEventListener('click', function() {
+            anketaOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Закрыть анкету (крестик)
+        anketaClose.addEventListener('click', function() {
+            anketaOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+
+        // Закрыть анкету (клик по затемнению)
+        anketaOverlay.addEventListener('click', function(e) {
+            if (e.target === anketaOverlay) {
+                anketaOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Отправка формы
+        anketaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                petType: document.getElementById('pet-type').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Данные анкеты:', formData);
+            
+            anketaForm.style.display = 'none';
+            anketaSuccess.style.display = 'block';
+        });
+
+        // Кнопка "Хорошо" после успешной отправки
+        anketaOk.addEventListener('click', function() {
+            anketaOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+            
+            setTimeout(() => {
+                anketaForm.reset();
+                anketaForm.style.display = 'block';
+                anketaSuccess.style.display = 'none';
+            }, 500);
+        });
+
+        // Закрыть по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && anketaOverlay.style.display === 'flex') {
+                anketaOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+</body>
+</html>

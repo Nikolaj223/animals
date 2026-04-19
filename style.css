@@ -1,0 +1,860 @@
+/* === СБРОС СТАНДАРТНЫХ ОТСТУПОВ === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    color: #3d2b1f;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* === ФОН С ЗАТЕМНЕНИЕМ (HERO) === */
+.hero {
+    min-height: 100vh;
+    background-image: url('https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(210, 180, 140, 0.3),
+        rgba(139, 69, 19, 0.5)
+    );
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* === ШАПКА === */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+    background: linear-gradient(to bottom, rgba(210, 180, 140, 0.5), transparent);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #3d2b1f;
+    text-shadow: 1px 1px 6px rgba(255, 248, 240, 0.8);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.logo span {
+    font-weight: 300;
+    font-size: 20px;
+    color: #5c3a21;
+}
+
+/* === МЕНЮ === */
+.nav-menu {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: rgba(255, 248, 240, 0.7);
+    border: 1.5px solid #c4a882;
+    color: #3d2b1f;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 40px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(100, 70, 40, 0.15);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-btn:hover {
+    background: #c4a882;
+    color: #fff8f0;
+    border-color: #a08060;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100, 70, 40, 0.25);
+}
+
+/* === ОСНОВНОЙ ТЕКСТ HERO === */
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.hero-title {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 12px rgba(255, 248, 240, 0.7);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    color: #2c1a0c;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.hero-description {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 8px rgba(255, 248, 240, 0.6);
+    max-width: 700px;
+    background: rgba(255, 248, 240, 0.5);
+    padding: 20px 35px;
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(196, 168, 130, 0.4);
+    color: #2c1a0c;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.main-cta {
+    background: #c4a882;
+    color: #2c1a0c;
+    border: none;
+    padding: 18px 48px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(100, 70, 40, 0.25);
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid #a08060;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main-cta:hover {
+    background: #a08060;
+    color: #fff8f0;
+    transform: scale(1.05);
+    border-color: #8b6b4a;
+}
+
+/* === РАЗДЕЛЫ СТРАНИЦЫ === */
+.page-section {
+    padding: 80px 20px;
+    background: #fff8f0;
+}
+
+.page-section:nth-child(even) {
+    background: #f5ebe0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c1a0c;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #c4a882;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.section-content {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #3d2b1f;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-content p {
+    margin-bottom: 20px;
+}
+
+/* === СТАТИСТИКА === */
+.about-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    color: #c4a882;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #5c3a21;
+}
+
+/* === СПИСОК ПОМОЩИ === */
+.help-list {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.help-list li {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* === КАТАЛОГ === */
+.catalog-placeholder {
+    background: rgba(196, 168, 130, 0.2);
+    padding: 60px;
+    border-radius: 20px;
+    border: 2px dashed #c4a882;
+    font-size: 24px;
+}
+
+/* === КОНТАКТЫ === */
+.contacts-info {
+    font-size: 20px;
+}
+
+.contacts-info p {
+    margin-bottom: 15px;
+}
+
+/* === ПОДВАЛ === */
+.footer {
+    background: #3d2b1f;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.footer-content {
+    text-align: center;
+    color: #fff8f0;
+}
+
+.footer-phone,
+.footer-email {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.footer-location {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #c4a882;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #a08060;
+}
+
+/* === ВСПЛЫВАЮЩАЯ АНКЕТА === */
+.anketa-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.anketa-popup {
+    background: #fff8f0;
+    border-radius: 30px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 2px solid #c4a882;
+    animation: popupShow 0.3s ease;
+}
+
+@keyframes popupShow {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.anketa-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #5c3a21;
+    z-index: 10;
+    transition: all 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.anketa-close:hover {
+    background: rgba(196, 168, 130, 0.2);
+    transform: rotate(90deg);
+}
+
+.anketa-content {
+    padding: 40px 30px;
+}
+
+.anketa-title {
+    font-size: 28px;
+    color: #2c1a0c;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.anketa-subtitle {
+    text-align: center;
+    color: #5c3a21;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.anketa-form {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #3d2b1f;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #c4a882;
+    border-radius: 15px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    background: white;
+    color: #3d2b1f;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #a08060;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-top: 3px;
+    accent-color: #c4a882;
+}
+
+.checkbox-label span {
+    font-size: 14px;
+    color: #5c3a21;
+}
+
+.anketa-submit {
+    width: 100%;
+    padding: 16px;
+    background: #c4a882;
+    color: #2c1a0c;
+    border: 2px solid #a08060;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+}
+
+.anketa-submit:hover {
+    background: #a08060;
+    color: #fff8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100, 70, 40, 0.25);
+}
+
+.anketa-success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.success-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.anketa-success h3 {
+    font-size: 24px;
+    color: #2c1a0c;
+    margin-bottom: 15px;
+}
+
+.anketa-success p {
+    color: #5c3a21;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.anketa-ok {
+    padding: 14px 40px;
+    background: #c4a882;
+    color: #2c1a0c;
+    border: 2px solid #a08060;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.anketa-ok:hover {
+    background: #a08060;
+    color: #fff8f0;
+}
+
+/* === ЧАТ-ВИДЖЕТ === */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.chat-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #c4a882;
+    color: #2c1a0c;
+    padding: 14px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(100, 70, 40, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid #a08060;
+    animation: pulse 2s infinite;
+}
+
+.chat-button:hover {
+    background: #a08060;
+    color: #fff8f0;
+    transform: translateY(-3px);
+}
+
+.chat-icon {
+    font-size: 28px;
+}
+
+.chat-button-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 25px rgba(196, 168, 130, 0.4); }
+    50% { box-shadow: 0 8px 35px rgba(196, 168, 130, 0.7); }
+}
+
+.chat-window {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: #fff8f0;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 2px solid #c4a882;
+}
+
+.chat-header {
+    background: #c4a882;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2c1a0c;
+}
+
+.chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-avatar {
+    font-size: 32px;
+    background: #fff8f0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-header-info h3 {
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.online-status {
+    font-size: 13px;
+    color: #2c5a2c;
+    font-weight: 500;
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: #2c1a0c;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.chat-close:hover {
+    color: #5c3a21;
+    transform: scale(1.1);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: linear-gradient(to bottom, #f5ebe0, #fff8f0);
+}
+
+.message {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.message-operator {
+    align-self: flex-start;
+}
+
+.message-user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 35px;
+    height: 35px;
+    background: #c4a882;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #2c1a0c;
+    flex-shrink: 0;
+}
+
+.message-user .message-avatar {
+    background: #a08060;
+}
+
+.message-bubble {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 240px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    line-height: 1.4;
+    color: #3d2b1f;
+}
+
+.message-operator .message-bubble {
+    background: #fff8f0;
+    border: 1px solid #c4a882;
+    border-bottom-left-radius: 4px;
+}
+
+.message-user .message-bubble {
+    background: #c4a882;
+    color: #2c1a0c;
+    border-bottom-right-radius: 4px;
+}
+
+.typing-indicator .message-bubble {
+    padding: 12px 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #a08060;
+    margin: 0 3px;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #c4a882;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1.5px solid #c4a882;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    font-family: 'Times New Roman', Times, serif;
+    background: #fff8f0;
+    color: #3d2b1f;
+}
+
+.chat-input:focus {
+    border-color: #a08060;
+    background: white;
+}
+
+.chat-send {
+    width: 45px;
+    height: 45px;
+    background: #c4a882;
+    border: none;
+    border-radius: 50%;
+    color: #2c1a0c;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border: 1.5px solid #a08060;
+}
+
+.chat-send:hover {
+    background: #a08060;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* === АДАПТИВ === */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        position: relative;
+    }
+
+    .hero-title {
+        font-size: 42px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+    }
+
+    .nav-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .about-stats {
+        gap: 30px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .chat-widget {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .chat-window {
+        width: 300px;
+        height: 450px;
+    }
+
+    .chat-button-text {
+        display: none;
+    }
+
+    .chat-button {
+        padding: 14px;
+        border-radius: 50%;
+    }
+
+    .anketa-popup {
+        max-width: 100%;
+    }
+    
+    .anketa-content {
+        padding: 30px 20px;
+    }
+    
+    .anketa-title {
+        font-size: 24px;
+    }
+}
+/* === ФОТОГРАФИЯ В РАЗДЕЛЕ "О ПРИЮТЕ" === */
+.about-main-photo {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.about-main-photo img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 3px solid #c4a882;
+    box-shadow: 0 8px 25px rgba(100, 70, 40, 0.2);
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.about-main-photo img:hover {
+    transform: scale(1.02);
+    border-color: #a08060;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .about-main-photo img {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+}
