@@ -15,8 +15,8 @@ export async function renderHomePage({ site }) {
         </section>
         ${renderSectionShell({
             eyebrow: "Животные, готовые к дому",
-            title: "Карточки с честной информацией, а не просто милыми фото",
-            lead: "У каждого питомца есть своя подробная страница с породой, весом, прививками, перенесенными заболеваниями и заметками по характеру.",
+            title: "Животные, которые готовы к знакомству",
+            lead: "У каждого питомца есть своя подробная страница с историей, характером, состоянием здоровья и важной информацией по уходу.",
             content: `<div class="card-grid home-animal-grid">${featuredAnimals.map(renderAnimalCard).join("")}</div>`
         })}
         ${renderSectionShell({
@@ -59,13 +59,13 @@ export async function renderHomePage({ site }) {
         ${renderSectionShell({
             eyebrow: "Поддержка приюта",
             title: "Помочь можно деньгами, делом или регулярной заботой",
-            lead: "На отдельной странице уже собраны реквизиты и рабочая форма заявки на помощь.",
+            lead: "Вы можете поддержать приют пожертвованием, вещами первой необходимости или личным участием.",
             content: `<div class="help-grid">${site.helpOptions.map(renderHelpCard).join("")}</div><div class="page-cta"><a class="button button--primary" href="/help/">Перейти к помощи приюту</a></div>`
         })}
         ${renderSectionShell({
             eyebrow: "Последние новости",
-            title: "Показываем живую работу приюта, а не пустой раздел-заглушку",
-            lead: "Пять новостей уже готовы в формате визуальных карточек с фото и ключевыми итогами.",
+            title: "Истории, события и будни приюта",
+            lead: "Здесь мы делимся новостями о питомцах, волонтерах и важных событиях приюта.",
             content: `<div class="news-grid">${latestNews.map(renderNewsCard).join("")}</div><div class="page-cta"><a class="button button--secondary" href="/news/">Смотреть все новости</a></div>`
         })}
         ${renderQuoteBand(site.quote)}
@@ -81,11 +81,11 @@ export async function renderHomePage({ site }) {
         ],
         facts: site.stats.slice(0, 3).map((item) => `${item.value} ${item.label}`),
         note: {
-            title: "Что уже есть на сайте",
+            title: "Почему здесь удобно",
             items: [
-                "Каталог животных с подробными карточками",
-                "Рабочие формы с сохранением в JSON",
-                "Окно «Задать вопрос» с ответами из кода"
+                "Подробные карточки животных",
+                "Понятный путь от знакомства до анкеты",
+                "Ответы на частые вопросы"
             ]
         }
     };

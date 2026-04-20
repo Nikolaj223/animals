@@ -93,7 +93,7 @@ export function renderHelpForm() {
                     <span class="eyebrow">Онлайн-форма помощи</span>
                     <h2 class="section-title">Поддержать приют</h2>
                     <p class="section-lead">
-                        Заявка сохранится в JSON-хранилище. Позже сюда легко подключается email-уведомление.
+                        Оставьте заявку, и мы свяжемся с вами, чтобы обсудить удобный формат помощи.
                     </p>
                 </div>
                 <form data-async-form data-form-type="help">
@@ -168,9 +168,10 @@ export function initAsyncForms() {
             const endpoint = formType === "help" ? "/api/help-requests" : "/api/adoption-applications";
             const storageKey =
                 formType === "help" ? "lapa_help_requests_local" : "lapa_adoption_requests_local";
+            const pendingText = formType === "help" ? "Отправляем заявку..." : "Отправляем анкету...";
 
             if (feedback) {
-                feedback.textContent = "Сохраняем заявку...";
+                feedback.textContent = pendingText;
                 feedback.className = "form-feedback";
             }
 
@@ -191,7 +192,7 @@ export function initAsyncForms() {
             } catch (error) {
                 if (feedback) {
                     feedback.textContent =
-                        error instanceof Error ? error.message : "Не удалось сохранить форму.";
+                        error instanceof Error ? error.message : "Не удалось отправить форму.";
                     feedback.className = "form-feedback is-error";
                 }
             } finally {

@@ -343,7 +343,7 @@ function Handle-Request {
         Write-JsonResponse -Stream $Stream -StatusCode 201 -Payload @{
             ok = $true
             id = $entry.id
-            message = "Adoption application saved to JSON storage."
+            message = "Спасибо! Анкета отправлена. Мы свяжемся с вами после проверки."
         }
         return
     }
@@ -372,7 +372,7 @@ function Handle-Request {
         Write-JsonResponse -Stream $Stream -StatusCode 201 -Payload @{
             ok = $true
             id = $entry.id
-            message = "Help request saved to JSON storage."
+            message = "Спасибо за поддержку! Мы получили вашу заявку и скоро свяжемся с вами."
         }
         return
     }
