@@ -1,5 +1,6 @@
 param(
-    [int]$Port = 8090
+    [int]$Port = 8090,
+    [switch]$KeepServerRunning
 )
 
 $ErrorActionPreference = "Stop"
@@ -44,7 +45,10 @@ $serverProcess = Start-Process `
     -PassThru
 
 try {
+    Write-Host "Smoke test: starting temporary server on $baseUrl"
     Wait-Server -Url $baseUrl
+    Write-Host "Server is ready."
+    Write-Host ""
 
     $paths = @(
         "/",
@@ -61,12 +65,16 @@ try {
         "/api/animals"
     )
 
+    Write-Host "Checking GET routes:"
+
     foreach ($path in $paths) {
         $response = Invoke-WebRequest "$baseUrl$path" -UseBasicParsing
 
         if ($response.StatusCode -ne 200) {
             throw "Expected HTTP 200 for $path but received $($response.StatusCode)."
         }
+
+        Write-Host "  [OK] $path"
     }
 
     $site = Invoke-RestMethod "$baseUrl/api/site"
@@ -74,6 +82,9 @@ try {
     if ([string]::IsNullOrWhiteSpace($site.brand.name)) {
         throw "Unexpected payload from /api/site."
     }
+
+    Write-Host ""
+    Write-Host "Checking form endpoints:"
 
     $adoptionResult = Invoke-RestMethod `
         -Uri "$baseUrl/api/adoption-applications" `
@@ -95,6 +106,8 @@ try {
         throw "POST /api/adoption-applications did not return ok=true."
     }
 
+    Write-Host "  [OK] POST /api/adoption-applications -> id $($adoptionResult.id)"
+
     $helpResult = Invoke-RestMethod `
         -Uri "$baseUrl/api/help-requests" `
         -Method POST `
@@ -114,9 +127,29 @@ try {
         throw "POST /api/help-requests did not return ok=true."
     }
 
+    Write-Host "  [OK] POST /api/help-requests -> id $($helpResult.id)"
+    Write-Host ""
     Write-Host "Smoke tests passed on $baseUrl"
+    Write-Host "Checked $($paths.Count) GET routes and 2 POST requests."
+    Write-Host "Test data was written to:"
+    Write-Host "  $adoptionStorage"
+    Write-Host "  $helpStorage"
+
+    if ($KeepServerRunning) {
+        Write-Host ""
+        Write-Host "The temporary smoke-test server is still running on $baseUrl"
+        Write-Host "Process ID: $($serverProcess.Id)"
+    } else {
+        Write-Host ""
+        Write-Host "Note: the server on $baseUrl was started only for the smoke test."
+        Write-Host "After the test it will be stopped automatically, so opening that port in a browser afterwards is expected to fail."
+        Write-Host "If you want to keep it running, use:"
+        Write-Host "  powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1 -KeepServerRunning"
+        Write-Host "If you want to open the site normally, run:"
+        Write-Host "  powershell -ExecutionPolicy Bypass -File .\server\server.ps1 -Port $Port"
+    }
 } finally {
-    if ($serverProcess -and -not $serverProcess.HasExited) {
+    if (-not $KeepServerRunning -and $serverProcess -and -not $serverProcess.HasExited) {
         Stop-Process -Id $serverProcess.Id -Force -ErrorAction SilentlyContinue
     }
 }

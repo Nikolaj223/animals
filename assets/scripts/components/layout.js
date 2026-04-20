@@ -17,7 +17,7 @@ function renderHeader(pageKey, site) {
         <header class="site-header">
             <div class="container-wide site-header__inner">
                 <a class="brand" href="/">
-                    <span class="brand__mark">ЛН</span>
+                    <span class="brand__mark">ЛП</span>
                     <span>
                         <span class="brand__title">${escapeHtml(site.brand.name)}</span>
                         <span class="brand__subtitle">${escapeHtml(site.brand.tagline)}</span>

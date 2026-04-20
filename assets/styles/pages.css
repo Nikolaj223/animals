@@ -1,10 +1,5 @@
-.home-animal-grid .card:nth-child(1) {
-    grid-column: span 6;
-}
-
-.home-animal-grid .card:nth-child(2),
-.home-animal-grid .card:nth-child(3) {
-    grid-column: span 3;
+.home-animal-grid .card {
+    grid-column: span 4;
 }
 
 .news-grid .card,
@@ -14,7 +9,7 @@
 }
 
 .catalog-grid .card {
-    grid-column: span 6;
+    grid-column: span 4;
 }
 
 .catalog-summary {
@@ -326,9 +321,7 @@
 }
 
 @media (max-width: 1080px) {
-    .home-animal-grid .card:nth-child(1),
-    .home-animal-grid .card:nth-child(2),
-    .home-animal-grid .card:nth-child(3),
+    .home-animal-grid .card,
     .news-grid .card,
     .catalog-grid .card,
     .value-grid .card,
@@ -351,9 +344,7 @@
     .catalog-grid .card,
     .value-grid .card,
     .help-grid .card,
-    .home-animal-grid .card:nth-child(1),
-    .home-animal-grid .card:nth-child(2),
-    .home-animal-grid .card:nth-child(3) {
+    .home-animal-grid .card {
         grid-column: 1 / -1;
     }
 }

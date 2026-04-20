@@ -1,7 +1,8 @@
 param(
     [int]$Port = 8091,
     [int]$Users = 6,
-    [int]$RequestsPerUser = 18
+    [int]$RequestsPerUser = 18,
+    [switch]$KeepServerRunning
 )
 
 $ErrorActionPreference = "Stop"
@@ -44,7 +45,13 @@ $serverProcess = Start-Process `
     -PassThru
 
 try {
+    Write-Host "Load test: starting temporary server on $baseUrl"
     Wait-Server -Url $baseUrl
+    Write-Host "Server is ready."
+    Write-Host "Workers: $Users"
+    Write-Host "Requests per worker: $RequestsPerUser"
+    Write-Host "Paths under test: /, /catalog/, /news/, /api/animals, /api/news, /help/"
+    Write-Host ""
 
     $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     $jobs = @()
@@ -85,12 +92,25 @@ try {
     $maxLatency = [math]::Round((($results | Measure-Object -Property MaxMs -Maximum).Maximum), 2)
     $requestsPerSecond = [math]::Round(($totalRequests / $stopwatch.Elapsed.TotalSeconds), 2)
 
+    Write-Host ""
     Write-Host "Load test finished on $baseUrl"
     Write-Host "Users: $Users"
     Write-Host "Total requests: $totalRequests"
     Write-Host "Average latency per worker: $averageLatency ms"
     Write-Host "Max latency: $maxLatency ms"
     Write-Host "Approx. throughput: $requestsPerSecond req/s"
+
+    if ($KeepServerRunning) {
+        Write-Host ""
+        Write-Host "The temporary load-test server is still running on $baseUrl"
+        Write-Host "Process ID: $($serverProcess.Id)"
+    } else {
+        Write-Host ""
+        Write-Host "Note: the server on $baseUrl was started only for the load test."
+        Write-Host "After the test it will be stopped automatically, so opening that port in a browser afterwards is expected to fail."
+        Write-Host "If you want to open the site manually, run:"
+        Write-Host "  powershell -ExecutionPolicy Bypass -File .\server\server.ps1 -Port $Port"
+    }
 } finally {
     if ($jobs) {
         $jobs | ForEach-Object {
@@ -99,7 +119,7 @@ try {
         }
     }
 
-    if ($serverProcess -and -not $serverProcess.HasExited) {
+    if (-not $KeepServerRunning -and $serverProcess -and -not $serverProcess.HasExited) {
         Stop-Process -Id $serverProcess.Id -Force -ErrorAction SilentlyContinue
     }
 }

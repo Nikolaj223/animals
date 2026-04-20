@@ -50,6 +50,18 @@ http://localhost:8086
 powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1
 ```
 
+Важно:
+
+- smoke-тест сам поднимает временный сервер на `http://localhost:8090`;
+- после завершения теста этот временный сервер автоматически останавливается;
+- поэтому если открыть `http://localhost:8090` уже после завершения теста, страница может быть недоступна, и это нормально.
+
+Если нужно, чтобы тестовый сервер остался работать после проверки:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1 -KeepServerRunning
+```
+
 Что проверяется:
 
 - доступность основных HTML-страниц;
@@ -60,7 +72,9 @@ powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1
 Успешный результат:
 
 - скрипт завершается без ошибки;
-- в конце появляется сообщение, что smoke-тесты пройдены.
+- в конце появляется список успешно проверенных маршрутов;
+- видно, что POST-запросы к формам тоже прошли;
+- в конце появляется пояснение, что временный сервер будет остановлен или оставлен запущенным.
 
 ## 3. Нагрузочный тест
 
@@ -68,6 +82,18 @@ powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\tests\load-test.ps1
+```
+
+Важно:
+
+- load-тест тоже сам поднимает временный сервер, по умолчанию на `http://localhost:8091`;
+- после завершения теста этот временный сервер автоматически останавливается;
+- поэтому этот порт нужен только на время теста, а не для постоянного открытия сайта в браузере.
+
+Если нужно оставить тестовый сервер после load-теста:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tests\load-test.ps1 -KeepServerRunning
 ```
 
 Что показывает:
@@ -134,6 +160,12 @@ powershell -ExecutionPolicy Bypass -File .\tests\load-test.ps1 -Port 8091 -Users
 Если новая запись появилась и в админке, и в файле, значит JSON-база работает корректно.
 
 ## Полезные команды
+
+Если нужно оставить тестовый сервер после smoke-теста:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tests\smoke-tests.ps1 -KeepServerRunning
+```
 
 Если нужно запустить сайт на другом порту:
 

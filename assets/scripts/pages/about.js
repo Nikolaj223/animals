@@ -21,9 +21,9 @@ export async function renderAboutPage({ site }) {
             content: `<div class="timeline">${site.timeline.map(renderTimelineCard).join("")}</div>`
         })}
         ${renderSectionShell({
-            eyebrow: "Пространство приюта",
-            title: "Визуальный блок с атмосферой и человеческим лицом проекта",
-            lead: "Фотографии собраны в асимметричную сетку, чтобы страница не выглядела шаблонной.",
+            eyebrow: "Фотографии приюта",
+            title: "Фотографии приюта и животных",
+            lead: "",
             content: `
                 <div class="media-grid">
                     <div class="media-card">
