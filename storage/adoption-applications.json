@@ -1,0 +1,56 @@
+﻿[
+    {
+        "id":  "216fc18e-fb87-46c5-9698-e440741dde17",
+        "createdAt":  "2026-04-19T21:26:59.2656054Z",
+        "message":  "Smoke test adoption payload",
+        "experience":  "had-pets",
+        "sourcePage":  "/tests/smoke",
+        "petType":  "cat",
+        "name":  "Smoke Test",
+        "housing":  "flat",
+        "agreement":  "yes",
+        "phone":  "+7 (900) 000-00-01",
+        "email":  "smoke@example.ru"
+    },
+    {
+        "id":  "1192d91f-9c70-469a-9f90-c7fec785db61",
+        "createdAt":  "2026-04-19T21:27:46.2381217Z",
+        "message":  "Smoke test adoption payload",
+        "experience":  "had-pets",
+        "sourcePage":  "/tests/smoke",
+        "petType":  "cat",
+        "name":  "Smoke Test",
+        "housing":  "flat",
+        "agreement":  "yes",
+        "phone":  "+7 (900) 000-00-01",
+        "email":  "smoke@example.ru"
+    },
+    {
+        "id":  "3be98ac3-4bd7-484c-a2f1-d57964565c6b",
+        "createdAt":  "2026-04-19T21:42:14.7230321Z",
+        "selectedPet":  "",
+        "name":  "Лапшов Николай Сергеевич",
+        "phone":  "+79228426731",
+        "email":  "kornev-nikolaj@bk.ru",
+        "petType":  "dog",
+        "housing":  "house",
+        "experience":  "had-pets",
+        "message":  "",
+        "agreement":  "yes",
+        "sourcePage":  "/adopt/"
+    },
+    {
+        "id":  "082eb0a0-c4d0-4496-8edb-1c5ec94b6e38",
+        "createdAt":  "2026-04-19T21:59:22.1460884Z",
+        "selectedPet":  "",
+        "name":  "Лапшов Николай Сергеевич",
+        "phone":  "+79228426731",
+        "email":  "kornev-nikolaj@bk.ru",
+        "petType":  "cat",
+        "housing":  "flat",
+        "experience":  "have-pets",
+        "message":  "",
+        "agreement":  "yes",
+        "sourcePage":  "/adopt/"
+    }
+]

@@ -1,0 +1,38 @@
+﻿[
+    {
+        "id":  "575f9f65-0c5c-49e0-b6e3-5d6e5f91af13",
+        "createdAt":  "2026-04-19T21:26:59.2975960Z",
+        "agreement":  "yes",
+        "sourcePage":  "/tests/smoke",
+        "name":  "Smoke Helper",
+        "amount":  "2500",
+        "helpType":  "donation",
+        "phone":  "+7 (900) 000-00-02",
+        "message":  "Smoke test help payload",
+        "email":  "helper@example.ru"
+    },
+    {
+        "id":  "4a420820-5143-49e2-8fa4-33cf097faeb5",
+        "createdAt":  "2026-04-19T21:27:46.2702150Z",
+        "agreement":  "yes",
+        "sourcePage":  "/tests/smoke",
+        "name":  "Smoke Helper",
+        "amount":  "2500",
+        "helpType":  "donation",
+        "phone":  "+7 (900) 000-00-02",
+        "message":  "Smoke test help payload",
+        "email":  "helper@example.ru"
+    },
+    {
+        "id":  "8bd597b3-0e2c-471f-80c6-6e602a45e073",
+        "createdAt":  "2026-04-19T22:00:51.5381794Z",
+        "name":  "николай",
+        "email":  "lapshov.kolya@bk.ru",
+        "phone":  "+79228426731",
+        "helpType":  "medicine",
+        "amount":  "200",
+        "message":  "1",
+        "agreement":  "yes",
+        "sourcePage":  "/help/"
+    }
+]
